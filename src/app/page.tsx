@@ -7,7 +7,7 @@ export default function Home() {
   const [name, setName] = useState("");
 
   return (
-    <div style={{ textAlign: 'center', padding: '2rem' }}>
+    <div style={{  textAlign: 'center', padding: '2rem' , height: '37vh', marginTop:'150px' }}>
       <h2 style={{ color: 'black' }}>Hello, Welcome to Minesweeper</h2>
       <input
         type="text"
