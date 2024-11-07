@@ -49,7 +49,7 @@ export default function gamePage() {
   const [score, setScore] = useState<number>(100);
   const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
 
-  useEffect(() => {
+  
     const generateRandomNumbers = () => {
       const numbers: number[] = [];
       while (numbers.length < 3) {
@@ -60,8 +60,15 @@ export default function gamePage() {
       }
       setRandomNumbers(numbers);
     };
+    
+
+  const resetGame= () => {
+    setGameOver(false);
     generateRandomNumbers();
-  }, []);
+  };
+   useEffect(() => {
+    generateRandomNumbers();
+   },[]);
 
   const items = [];
   for (let index = 1; index <= 9; index++) {
@@ -77,7 +84,14 @@ export default function gamePage() {
   }
 
   return (
-    <div className="game-page bg-gray-900 text-black min-h-screen flex items-center justify-center">
+<div className="game-page bg-gray-900 text-black min-h-screen flex items-center justify-center">
+      <button 
+        className="new-game-btn bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4"
+        onClick={resetGame}
+      >
+        New Game
+      </button>
+     
   <div className="game-container bg-gray-800 p-8 rounded-lg shadow-lg">
     <div className="score-section mb-6 text-lg">
       <p>Welcome, {name || 'Player'}!</p>
@@ -86,7 +100,6 @@ export default function gamePage() {
       <p>Lose: -10</p>
     </div>
 
-    
     <div className="grid-container">
       {items}
     </div>
